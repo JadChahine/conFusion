@@ -1,0 +1,8 @@
+.single-row-card{
+    max-width: 50%;
+    float:left;
+}
+
+.dishdetail-title > ::ng-deep figure {
+    justify-content: flex-start !important;
+}

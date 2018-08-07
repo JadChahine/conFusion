@@ -8,8 +8,8 @@ const DISHES: Dish[] = [
       category: 'mains',
       label: 'Hot',
       price: '4.99',
-      // tslint:disable-next-line:max-line-length
-      description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.'
+      comments: [],
+      description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
     },
     {
       name: 'Zucchipakoda',
@@ -17,6 +17,7 @@ const DISHES: Dish[] = [
       category: 'appetizer',
       label: '',
       price: '1.99',
+      comments: [],
       description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce'
     },
     {
@@ -25,6 +26,7 @@ const DISHES: Dish[] = [
       category: 'appetizer',
       label: 'New',
       price: '1.99',
+      comments: [],
       description: 'A quintessential ConFusion experience, is it a vada or is it a donut?'
     },
     {
@@ -33,6 +35,7 @@ const DISHES: Dish[] = [
       category: 'dessert',
       label: '',
       price: '2.99',
+      comments: [],
       description: 'A delectable, semi-sweet New York Style Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms'
     }
   ];
@@ -45,11 +48,15 @@ const DISHES: Dish[] = [
 export class MenuComponent implements OnInit {
 
   dishes : Dish[] = DISHES;
-  selectedDish = DISHES[0];
+  selectedDish: Dish;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(dish: Dish){
+    this.selectedDish = dish;
   }
 
 }
