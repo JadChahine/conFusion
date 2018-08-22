@@ -1,4 +1,4 @@
-<div class="container"
+<div class="container" *ngIf="dish"
     fxLayout="row"
     fxLayout.sm="column"
     fxLayout.xs="column"
@@ -10,7 +10,8 @@
       <mat-card ng-if="dish">
         <mat-card-header>
           <mat-card-title>
-            <h3>{{dish.name | uppercase}}</h3>
+            <!-- <h3>{{dish.name | uppercase}}</h3> -->
+            <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
           </mat-card-title>
         </mat-card-header>
         <img mat-card-image src={{dish.image}} alt={{dish.name}}>
@@ -37,6 +38,11 @@
       </mat-grid-list>
   </div>
 
+</div>
+
+<div [hidden]="dish">
+  <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+</div>
 
   <!--
     <div fxFlex="58" *ngIf="dish" style="height: 680px;">
@@ -54,4 +60,3 @@
     </mat-list>
   </div>
   -->
-</div>
