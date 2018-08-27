@@ -32,9 +32,9 @@ export class HomeComponent implements OnInit {
     */
 
    this.dishservice.getFeaturedDish().subscribe(dish => this.dish = dish);
-   this.promotionservice.getFeaturedPromotion().subscribe(promotion => this.promotion == promotion);
-   this.leaderService.getFeaturedLeader().subscribe(leader => this.leader == leader);
-
+   this.promotionservice.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion);
+   this.leaderService.getFeaturedLeader().subscribe(leader => this.leader = leader);
+ 
   }
 
 }
