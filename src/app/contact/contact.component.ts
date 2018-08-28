@@ -23,18 +23,6 @@ export class ContactComponent implements OnInit {
   }
 
   createForm() {
-    /*
-    this.feedbackForm = this.fb.group({
-      firstname: ['', Validators.required ],
-      lastname: ['', Validators.required ],
-      telnum: ['', Validators.required ],
-      email: ['', Validators.required ],
-      agree: false,
-      contacttype: 'None',
-      message: ''
-    });
-    */
-
    this.feedbackForm = this.fb.group({
     firstname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
     lastname: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)] ],
@@ -81,7 +69,7 @@ export class ContactComponent implements OnInit {
 
   onSubmit() {
     this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+    
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',
@@ -91,6 +79,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+    
     this.feedbackFormDirective.resetForm();
   }
 

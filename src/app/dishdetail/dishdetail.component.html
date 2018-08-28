@@ -27,8 +27,8 @@
       </mat-card>
   </div>
 
-  <div fxFlex="40">
-    <h3>Comments</h3>
+    <div fxFlex="40">
+      <h3>Comments</h3>
       <mat-grid-list cols="1" rowHeight="100px">
           <mat-grid-tile class="dishdetail-title" *ngFor="let cmnt of dish.comments">
             {{cmnt.comment}}<br/>
@@ -36,7 +36,32 @@
             -- {{cmnt.author}} {{cmnt.date | date : 'MMM dd, yyyy'}} <br/>
           </mat-grid-tile>
       </mat-grid-list>
-  </div>
+    
+    <p [hidden]="commentForm.form.invalid">
+      {{ commentFormGroup.value.comment  }} <br/>
+      {{commentFormGroup.value.rating  }} stars<br/>
+      -- {{commentFormGroup.value.author }} <br/>
+    </p>
+
+      <form novalidate #commentForm="ngForm" [formGroup]="commentFormGroup" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field class="full-width">
+            <input matInput formControlName="author" placeholder="Name" type="text">
+            <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-slider min="1" max="5" formControlName="rating" placeholder="Rating" thumbLabel></mat-slider>
+        </p>
+        <p>
+          <mat-form-field class="full-width">
+            <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12></textarea>
+            <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
+          </mat-form-field>
+        </p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.form.invalid">Submit</button>
+      </form>
+    </div>
 
 </div>
 
@@ -44,27 +69,9 @@
   <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
 </div>
 
-
 <mat-card-actions>
   <button mat-button [routerLink]="['/dishdetail', prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
   
   <span class="flex-spacer"></span>
   <button mat-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
 </mat-card-actions>
-
-  <!--
-    <div fxFlex="58" *ngIf="dish" style="height: 680px;">
-    <h3>Comments</h3>
-    <mat-list role="list" *ngFor="let comment of dish.comments" style="height: 90px;">
-      <mat-list-item role="listitem" style="height: 20px;">
-        <span>{{comment.comment}}</span>
-      </mat-list-item>
-      <mat-list-item role="listitem" style="height: 20px;">
-        <span>{{comment.rating}} Stars</span>
-      </mat-list-item>
-      <mat-list-item role="listitem" style="height: 20px;">
-        <span>-- {{comment.author}} {{comment.date | date}}</span>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  -->

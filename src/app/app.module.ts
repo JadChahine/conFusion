@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider';
 
 //Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -68,7 +69,8 @@ import { LeaderService } from './services/leader.service';
     ReactiveFormsModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSliderModule
   ],
   providers: [
     DishService,
